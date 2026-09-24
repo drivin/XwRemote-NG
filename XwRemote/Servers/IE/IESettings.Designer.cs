@@ -1,4 +1,4 @@
-﻿using System.Windows.Forms;
+using System.Windows.Forms;
 
 namespace XwRemote.Servers
 {
@@ -67,7 +67,7 @@ namespace XwRemote.Servers
             this.dialogHeader1.Gradient4 = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
             this.dialogHeader1.HeaderDescription = "Connection settings for Web Console Devices";
             this.dialogHeader1.HeaderImage = global::XwRemote.Properties.Resources.IE;
-            this.dialogHeader1.HeaderTitle = "Internet Explorer";
+            this.dialogHeader1.HeaderTitle = "Web Browser";
             this.dialogHeader1.Location = new System.Drawing.Point(0, 0);
             this.dialogHeader1.Name = "dialogHeader1";
             this.dialogHeader1.Size = new System.Drawing.Size(395, 50);
@@ -324,7 +324,7 @@ namespace XwRemote.Servers
             this.Name = "IESettings";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "IE Settings";
+            this.Text = "Web Browser Settings";
             this.Load += new System.EventHandler(this.OnLoad);
             this.dividerPanel1.ResumeLayout(false);
             this.dividerPanel1.PerformLayout();

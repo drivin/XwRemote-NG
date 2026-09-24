@@ -188,16 +188,6 @@
             this.toolScanner.ToolTipText = "Network scanner";
             this.toolScanner.Click += new System.EventHandler(this.toolScanner_Click);
             // 
-            // Toolbar_CanYouHelp
-            // 
-            this.Toolbar_CanYouHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.Toolbar_CanYouHelp.Image = global::XwRemote.Properties.Resources.paypal;
-            this.Toolbar_CanYouHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Toolbar_CanYouHelp.Name = "Toolbar_CanYouHelp";
-            this.Toolbar_CanYouHelp.Size = new System.Drawing.Size(102, 22);
-            this.Toolbar_CanYouHelp.Text = "Can you help?";
-            this.Toolbar_CanYouHelp.Click += new System.EventHandler(this.Toolbar_CanYouHelp_Click);
-            // 
             // Toolbar_Stuff
             // 
             this.Toolbar_Stuff.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;

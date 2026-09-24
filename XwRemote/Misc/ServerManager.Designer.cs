@@ -1,4 +1,4 @@
-﻿namespace XwRemote
+namespace XwRemote
 {
     partial class ServerManager
     {
@@ -458,7 +458,7 @@
             this.copyAsIE.Image = global::XwRemote.Properties.Resources.IE;
             this.copyAsIE.Name = "copyAsIE";
             this.copyAsIE.Size = new System.Drawing.Size(125, 22);
-            this.copyAsIE.Text = "IE";
+            this.copyAsIE.Text = "Web Browser";
             this.copyAsIE.Click += new System.EventHandler(this.copyAsIE_Click);
             // 
             // ExportServer
@@ -479,7 +479,7 @@
             this.NewIE.Size = new System.Drawing.Size(141, 23);
             this.NewIE.TabIndex = 9;
             this.NewIE.TabStop = false;
-            this.NewIE.Text = "New IE";
+            this.NewIE.Text = "New Web Browser";
             this.NewIE.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.NewIE.UseVisualStyleBackColor = true;
             this.NewIE.Click += new System.EventHandler(this.newIE_Click);

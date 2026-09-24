@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BD4B53CC-4C74-4879-A716-259F937E31BE}</ProjectGuid>
@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>XwRemote</RootNamespace>
     <AssemblyName>XwRemote</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -44,38 +45,34 @@
   <ItemGroup>
     <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\AWSSDK.Core.dll</HintPath>
+      <HintPath>Lib\AWS\AWSSDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="AWSSDK.S3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\AWSSDK.S3.dll</HintPath>
+      <HintPath>Lib\AWS\AWSSDK.S3.dll</HintPath>
     </Reference>
     <Reference Include="AxInterop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\AxInterop.MSTSCLib.dll</HintPath>
+      <HintPath>Lib\Microsoft\AxInterop.MSTSCLib.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="FluentFTP, Version=19.2.2.0, Culture=neutral, PublicKeyToken=f4af092b1d8df44f, processorArchitecture=MSIL">
+    <Reference Include="FluentFTP, Version=34.0.0.0, Culture=neutral, PublicKeyToken=f4af092b1d8df44f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\FluentFTP.dll</HintPath>
+      <HintPath>Lib\Other\FluentFTP.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="Interop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>Lib\Interop.MSTSCLib.dll</HintPath>
+      <HintPath>Lib\Microsoft\Interop.MSTSCLib.dll</HintPath>
     </Reference>
-    <Reference Include="IPAddressControlLib, Version=1.1.6934.25695, Culture=neutral, PublicKeyToken=55e96405d8fd6d61, processorArchitecture=MSIL" />
+    <Reference Include="IPAddressControlLib"><HintPath>Lib\Other\IPAddressControlLib.dll</HintPath></Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\Microsoft\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Renci.SshNet, Version=2020.0.1.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\Other\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\Renci.SshNet.dll</HintPath>
+      <HintPath>Lib\Other\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="SharpRaven, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -99,9 +96,9 @@
     </Reference>
     <Reference Include="XwMaxLib, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\XwMaxLibrary\XwMaxLib.dll</HintPath>
+      <HintPath>Lib\XwMaxLib\XwMaxLib.dll</HintPath>
     </Reference>
-    <Reference Include="zlib.net, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="zlib.net"><HintPath>Lib\Other\zlib.net.dll</HintPath></Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\Group.cs" />
@@ -399,8 +396,6 @@
     <Content Include="Lib\Other\FluentFTP.xml" />
     <Content Include="Lib\Other\IPAddressControlLib.dll" />
     <Content Include="Lib\Other\IPAddressControlLib.pdb" />
-    <Content Include="Lib\Other\Newtonsoft.Json.dll" />
-    <Content Include="Lib\Other\Newtonsoft.Json.xml" />
     <Content Include="Lib\Other\Renci.SshNet.dll" />
     <Content Include="Lib\Other\Renci.SshNet.xml" />
     <Content Include="Lib\Other\SharpRaven.dll" />
@@ -418,7 +413,6 @@
     <Content Include="Resources\eye.png" />
     <Content Include="Resources\inout.png" />
     <None Include="Resources\magnifier.png" />
-    <Content Include="Resources\XwUpdater.exe" />
     <EmbeddedResource Include="Resources\whynot.txt" />
     <None Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -466,26 +460,23 @@
     <None Include="Resources\chart_line.png" />
     <None Include="Resources\xwremote.png" />
   </ItemGroup>
+
   <ItemGroup>
-    <COMReference Include="AxMSTSCLib">
-      <Guid>{8C11EFA1-92C3-11D1-BC1E-00C04FA31489}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>aximp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
-    <COMReference Include="MSTSCLib">
-      <Guid>{8C11EFA1-92C3-11D1-BC1E-00C04FA31489}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
+    <None Include="App.config" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4191.47" />
+    <ProjectReference Include="..\XwUpdater\XwUpdater.csproj">
+      <Project>{7E2EEB19-00FA-4010-B437-5D5CC121FC2B}</Project>
+      <Name>XwUpdater</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <EmbeddedResource Include="..\XwUpdater\bin\$(Configuration)\XwUpdater.exe">
+      <LogicalName>XwRemote.Updater.exe</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\XwUpdater\bin\$(Configuration)\XwUpdater.exe.config">
+      <LogicalName>XwRemote.Updater.exe.config</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

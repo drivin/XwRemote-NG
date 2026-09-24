@@ -616,7 +616,6 @@ namespace XwRemote.Servers.IO
                     
                         return false;
                     }
-                    break;
                 default:
                     throw new Exception("Exists not implemented for this engine");
             }

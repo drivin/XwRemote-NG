@@ -58,6 +58,16 @@ namespace XwRemote.Servers
                 return;
             }
 
+            try
+            {
+                IEForm.GetAddress(HostBox.Text);
+            }
+            catch (ArgumentException ex)
+            {
+                HostBox.ShowBalloon(ToolTipIcon.Warning, "Link", ex.Message);
+                return;
+            }
+
             server.Name = NameBox.Text;
             server.Host = HostBox.Text;
             server.Username = UserBox.Text;

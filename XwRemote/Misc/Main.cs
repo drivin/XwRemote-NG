@@ -364,14 +364,6 @@ namespace XwRemote
         }
 
         //*************************************************************************************************************
-        private void Toolbar_CanYouHelp_Click(object sender, EventArgs e)
-        {
-            Stuff stuff = new Stuff();
-            stuff.faTabStrip1.SelectedItem = stuff.faTabDonation;
-            stuff.ShowDialog();
-        }
-
-        //*************************************************************************************************************
         private void Toolbar_Stuff_Click(object sender, EventArgs e)
         {
             Stuff stuff = new Stuff();

@@ -192,7 +192,22 @@ namespace XwRemote.Misc
                 IPAddress fromIP = IPAddress.Parse(ipAddressControlFrom.Text);
                 IPAddress toIP = IPAddress.Parse(ipAddressControlTo.Text);
 
-                if (fromIP.Address > toIP.Address)
+                if (fromIP.AddressFamily != AddressFamily.InterNetwork ||
+                    toIP.AddressFamily != AddressFamily.InterNetwork)
+                {
+                    MessageBox.Show("Only IPv4 addresses are supported");
+                    return;
+                }
+
+                byte[] fromOctets = fromIP.GetAddressBytes();
+                byte[] toOctets = toIP.GetAddressBytes();
+                // Compare in network byte order, with the first octet most significant.
+                uint fromAddress = ((uint)fromOctets[0] << 24) | ((uint)fromOctets[1] << 16) |
+                    ((uint)fromOctets[2] << 8) | fromOctets[3];
+                uint toAddress = ((uint)toOctets[0] << 24) | ((uint)toOctets[1] << 16) |
+                    ((uint)toOctets[2] << 8) | toOctets[3];
+
+                if (fromAddress > toAddress)
                 {
                     MessageBox.Show("to Address must be higher than from Address");
                     return;
@@ -210,9 +225,6 @@ namespace XwRemote.Misc
                 Main.config.SetValue("LASTSCANCHECKDNS", checkDNS.Checked.ToString());
                 Main.config.SetValue("LASTSCANCHECKNETBIOS", checkNetBios.Checked.ToString());
 
-
-                byte[] fromOctets = fromIP.GetAddressBytes();
-                byte[] toOctets = toIP.GetAddressBytes();
 
                 //So ugly...
                 int numberOfHosts = 0;
@@ -607,7 +619,7 @@ namespace XwRemote.Misc
                     return $"{deviceName}";
                 }
             }
-            catch (SocketException ex)
+            catch (SocketException)
             {
                 return "- - -";
             }

@@ -20,7 +20,7 @@ namespace XwRemote.Servers
         public ToolTip linkTip = new ToolTip();
         public bool SkipCheckLink = false;
         private XwRemoteIO remoteIO = new XwRemoteIO();
-        private bool Closing = false;
+        private bool isClosing = false;
 
         //*************************************************************************************************************
         public IOForm(Server srv)
@@ -121,7 +121,7 @@ namespace XwRemote.Servers
         //*************************************************************************************************************
         public bool OnTabClose()
         {
-            Closing = true;
+            isClosing = true;
             remoteIO.Close();
             return true;
         }
@@ -171,7 +171,7 @@ namespace XwRemote.Servers
         //*************************************************************************************************************
         public void Log(string text, Color textColor)
         {
-            if (Closing)
+            if (isClosing)
                 return;
 
             if (text.StartsWith("OK   :"))

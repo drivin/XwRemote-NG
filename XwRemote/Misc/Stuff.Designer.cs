@@ -54,7 +54,6 @@
             this.buttonSend = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.CommentBox = new System.Windows.Forms.TextBox();
-            this.faTabDonation = new FarsiLibrary.Win.FATabStripItem();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,7 +68,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.faTabUpdates.SuspendLayout();
             this.faTabContact.SuspendLayout();
-            this.faTabDonation.SuspendLayout();
             this.faTabCredits.SuspendLayout();
             this.faTabWhyNot.SuspendLayout();
             this.SuspendLayout();
@@ -99,7 +97,6 @@
             this.faTabAbout,
             this.faTabUpdates,
             this.faTabContact,
-            this.faTabDonation,
             this.faTabCredits,
             this.faTabWhyNot});
             this.faTabStrip1.Location = new System.Drawing.Point(0, 50);
@@ -351,19 +348,6 @@
             this.CommentBox.Size = new System.Drawing.Size(535, 190);
             this.CommentBox.TabIndex = 5;
             // 
-            // faTabDonation
-            // 
-            this.faTabDonation.CanClose = false;
-            this.faTabDonation.Controls.Add(this.label8);
-            this.faTabDonation.Controls.Add(this.label7);
-            this.faTabDonation.Controls.Add(this.label6);
-            this.faTabDonation.Controls.Add(this.linkLabel3);
-            this.faTabDonation.IsDrawn = true;
-            this.faTabDonation.Name = "faTabDonation";
-            this.faTabDonation.Size = new System.Drawing.Size(557, 367);
-            this.faTabDonation.TabIndex = 3;
-            this.faTabDonation.Title = "Can you Help?";
-            // 
             // label8
             // 
             this.label8.Location = new System.Drawing.Point(11, 69);
@@ -473,8 +457,6 @@
             this.faTabUpdates.PerformLayout();
             this.faTabContact.ResumeLayout(false);
             this.faTabContact.PerformLayout();
-            this.faTabDonation.ResumeLayout(false);
-            this.faTabDonation.PerformLayout();
             this.faTabCredits.ResumeLayout(false);
             this.faTabWhyNot.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -503,7 +485,6 @@
         private System.Windows.Forms.TextBox MailBox;
         private System.Windows.Forms.TextBox NameBox;
         public FarsiLibrary.Win.FATabStrip faTabStrip1;
-        public FarsiLibrary.Win.FATabStripItem faTabDonation;
         public FarsiLibrary.Win.FATabStripItem faTabUpdates;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.LinkLabel linkLabel3;

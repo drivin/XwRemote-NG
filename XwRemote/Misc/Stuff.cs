@@ -1,4 +1,4 @@
-﻿using SharpRaven;
+using SharpRaven;
 using SharpRaven.Data;
 using System;
 using System.Diagnostics;
@@ -228,7 +228,12 @@ namespace XwRemote.Misc
                         process.Kill();
                 }
 
-                File.WriteAllBytes(Path.Combine(path, "XwUpdater.exe"), Resources.XwUpdater);
+                foreach (string suffix in new[] { ".exe", ".exe.config" })
+                {
+                    using (var source = typeof(Stuff).Assembly.GetManifestResourceStream("XwRemote.Updater" + suffix))
+                    using (var destination = File.Create(Path.Combine(path, "XwUpdater" + suffix)))
+                        source.CopyTo(destination);
+                }
                 using (Process process = new Process())
                 {
                     process.StartInfo.FileName = Path.Combine(path, "XwUpdater.exe");
