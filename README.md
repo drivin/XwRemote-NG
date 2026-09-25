@@ -1,6 +1,7 @@
 # XwRemote NG
 
 [![Build release](https://github.com/drivin/XwRemote-NG/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/drivin/XwRemote-NG/actions/workflows/release.yml)
+
 [![Buy Me a Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/drivin)
 
 ## Automated releases
