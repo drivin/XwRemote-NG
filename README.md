@@ -4,42 +4,6 @@
 
 [![Buy Me a Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/drivin)
 
-## Automated releases
-
-The **Build release** GitHub Actions workflow builds on Windows Server 2022 with
-the .NET Framework 4.8 targeting pack. This build environment does not replace
-runtime testing on Windows Server 2016.
-
-Every push to `master` automatically builds and packages the application. After
-a successful build and artifact upload, the workflow creates the version tag
-and GitHub release from the compiled version in `XwRemote/Version.cs`.
-Existing releases remain unchanged; increase the version for each new release.
-Explicit version tags are also supported:
-
-```powershell
-git tag v4.0.0.0
-git push origin v4.0.0.0
-```
-
-For explicit tags, the workflow verifies that the compiled assembly version matches the tag,
-packages application dependencies, native loaders, PuTTY, README, credits and
-license, and publishes `XwRemote.v4.0.0.0.zip` plus its SHA-256 checksum.
-The ZIP layout and filename remain compatible with the in-app updater.
-Existing release assets are not overwritten. Build or upload failures are
-reported as failed workflow runs.
-
-For a manual build, choose **Actions → Build release → Run workflow**.
-Runs on `master` or a version tag publish the release automatically; other
-branches only upload build artifacts. Existing tags must point to the built commit.
-On forks, GitHub Actions may first need to be enabled in the Actions tab.
-No personal access token is required by the workflow; it uses `GITHUB_TOKEN`.
-
-Local packaging after a Release build:
-`powershell -ExecutionPolicy Bypass -File .\scripts\Package-Release.ps1 -Tag v4.0.0.0`.
-Output is written to the ignored `artifacts` directory. Use a fresh build directory;
-an existing package with the same version is deliberately not overwritten.
-
-
 XwRemote NG is a continuation of [maxsnts/XwRemote](https://github.com/maxsnts/XwRemote), maintained by [drivin](https://github.com/drivin).
 
 This fork includes .NET Framework 4.8 builds, an embedded WebView2 browser,
