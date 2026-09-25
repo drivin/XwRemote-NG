@@ -1,4 +1,6 @@
 # XwRemote NG
+
+[![Build release](https://github.com/drivin/XwRemote-NG/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/drivin/XwRemote-NG/actions/workflows/release.yml)
 [![Buy Me a Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/drivin)
 
 ## Automated releases
@@ -7,23 +9,27 @@ The **Build release** GitHub Actions workflow builds on Windows Server 2022 with
 the .NET Framework 4.8 targeting pack. This build environment does not replace
 runtime testing on Windows Server 2016.
 
-To publish a release, commit the version in `XwRemote/Version.cs`, then push a
-matching tag (for example `v4.0.0.0`):
+Every push to `master` automatically builds and packages the application. After
+a successful build and artifact upload, the workflow creates the version tag
+and GitHub release from the compiled version in `XwRemote/Version.cs`.
+Existing releases remain unchanged; increase the version for each new release.
+Explicit version tags are also supported:
 
 ```powershell
 git tag v4.0.0.0
 git push origin v4.0.0.0
 ```
 
-The workflow verifies that the compiled assembly version matches the tag,
+For explicit tags, the workflow verifies that the compiled assembly version matches the tag,
 packages application dependencies, native loaders, PuTTY, README, credits and
 license, and publishes `XwRemote.v4.0.0.0.zip` plus its SHA-256 checksum.
 The ZIP layout and filename remain compatible with the in-app updater.
 Existing release assets are not overwritten. Build or upload failures are
 reported as failed workflow runs.
 
-For a build without publishing, choose **Actions → Build release → Run workflow**
-on a branch. Running on a version tag also publishes that release.
+For a manual build, choose **Actions → Build release → Run workflow**.
+Runs on `master` or a version tag publish the release automatically; other
+branches only upload build artifacts. Existing tags must point to the built commit.
 On forks, GitHub Actions may first need to be enabled in the Actions tab.
 No personal access token is required by the workflow; it uses `GITHUB_TOKEN`.
 

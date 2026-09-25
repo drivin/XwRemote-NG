@@ -2,6 +2,8 @@ name: Build release
 
 on:
   push:
+    branches:
+      - master
     tags:
       - 'v*'
   workflow_dispatch:
@@ -10,7 +12,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: publish-release
   cancel-in-progress: false
 
 jobs:
@@ -43,13 +45,31 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Publish tagged release
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Publish release after successful build
+        if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          RELEASE_TAG: ${{ github.ref_name }}
+          BUILD_COMMIT: ${{ github.sha }}
         run: |
+          $version = [Reflection.AssemblyName]::GetAssemblyName((Join-Path $PWD 'XwRemote/bin/Release/XwRemote.exe')).Version.ToString()
+          $tag = "v$version"
+          $existing = @(gh api --paginate "repos/$env:GH_REPO/releases" --jq '.[].tag_name')
+          if ($LASTEXITCODE -ne 0) { throw 'Unable to check existing releases.' }
+          if ($existing -contains $tag) {
+            Write-Host "Release $tag already exists. Increase Version.cs for a new release."
+            exit 0
+          }
+          $remoteTag = @(git ls-remote origin "refs/tags/$tag")
+          if ($LASTEXITCODE -ne 0) { throw 'Unable to check release tag.' }
+          if ($remoteTag.Count -gt 0) {
+            git fetch origin "refs/tags/${tag}:refs/tags/${tag}"
+            if ($LASTEXITCODE -ne 0) { throw 'Unable to fetch release tag.' }
+            $tagCommit = git rev-list -n 1 $tag
+            if ($LASTEXITCODE -ne 0 -or $tagCommit -ne $env:BUILD_COMMIT) {
+              throw "Tag $tag belongs to a different commit. Increase Version.cs."
+            }
+          }
           $notes = @"
           Requires .NET Framework 4.8 and Microsoft Edge WebView2 Evergreen Runtime.
           Extract the entire ZIP, including native DLL subdirectories.
@@ -58,5 +78,5 @@ jobs:
           $notesPath = Join-Path $env:RUNNER_TEMP 'release-notes.md'
           Set-Content -LiteralPath $notesPath -Value $notes -Encoding UTF8
           $assets = @(Get-ChildItem artifacts -File | Select-Object -ExpandProperty FullName)
-          gh release create $env:RELEASE_TAG @assets --verify-tag --title "XwRemote NG $env:RELEASE_TAG" --notes-file $notesPath --generate-notes
+          gh release create $tag @assets --target $env:BUILD_COMMIT --title "XwRemote NG $tag" --notes-file $notesPath --generate-notes
           if ($LASTEXITCODE -ne 0) { throw 'Release publication failed; existing releases are not overwritten.' }
