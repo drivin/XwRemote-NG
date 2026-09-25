@@ -5,3 +5,12 @@ obj
 *.user
 *.suo
 artifacts/
+
+# Local planning documents and working notes (not product documentation).
+UPGRADE-PLAN.md
+notes/
+Notizen/
+*.local.md
+NOTES.md
+NOTIZEN.md
+*-PLAN.md
