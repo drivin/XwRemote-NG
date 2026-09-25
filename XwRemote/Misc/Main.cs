@@ -1,4 +1,4 @@
-﻿using KRBTabControlNS.CustomTab;
+using KRBTabControlNS.CustomTab;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -20,7 +20,8 @@ namespace XwRemote
         public static ImageList myImageList = new ImageList();
         public static Config config = new Config();
         public static List<Server> servers = new List<Server>();
-        public static string UpdateRepo = "XwRemote";
+        public static string UpdateRepo = "XwRemote"; // Release asset / executable name retained for compatibility.
+        public const string UpdateRepositoryUrl = "https://github.com/drivin/xwremote-ng";
         public static string CurrentVersion = "";
 
         private System.Windows.Forms.Timer timerClose = new System.Windows.Forms.Timer();
@@ -35,7 +36,7 @@ namespace XwRemote
             InitializeComponent();
             CurrentVersion += System.Diagnostics.FileVersionInfo.GetVersionInfo(
                 System.Reflection.Assembly.GetAssembly(typeof(Main)).Location).FileVersion.ToString();
-            Text = $"XwRemote {CurrentVersion}";
+            Text = $"XwRemote NG {CurrentVersion}";
         }
 
         //*************************************************************************************************************
@@ -270,7 +271,7 @@ namespace XwRemote
 
                 using (WebClient client = new WebClient())
                 {
-                    string content = client.DownloadString($"https://github.com/maxsnts/{Main.UpdateRepo}/releases/latest");
+                    string content = client.DownloadString($"{Main.UpdateRepositoryUrl}/releases/latest");
                     Match m = Regex.Match(content, @"(?isx)/releases/tag/v(?<VERSION>\d+\.\d+\.\d+\.\d+)""");
                     string latestVersion = m.Result("${VERSION}");
 

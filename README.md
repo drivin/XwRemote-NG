@@ -1,5 +1,15 @@
-# XwRemote 
+# XwRemote NG
 [![PayPal donate button](https://www.paypalobjects.com/webstatic/en_US/btn/btn_donate_pp_142x27.png)](https://www.paypal.me/maxsnts)
+
+XwRemote NG is a continuation of [maxsnts/XwRemote](https://github.com/maxsnts/XwRemote), maintained by [drivin](https://github.com/drivin).
+
+This fork includes .NET Framework 4.8 builds, an embedded WebView2 browser,
+updated build dependencies, compiler-warning fixes and browser integration tests.
+The original project history and GPL-3.0 license are retained. Windows Server
+2016 runtime acceptance remains pending. AD authorization is planned, not implemented.
+
+Repository: https://github.com/drivin/xwremote-ng (publication pending).
+The executable and configuration filenames remain `XwRemote` to preserve existing installations.
 
 How do i eliminate the need for many applications and the consequent open and close merry-go-round?
 
