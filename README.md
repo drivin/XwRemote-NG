@@ -8,7 +8,7 @@ updated build dependencies, compiler-warning fixes and browser integration tests
 The original project history and GPL-3.0 license are retained. Windows Server
 2016 runtime acceptance remains pending. AD authorization is planned, not implemented.
 
-Repository: https://github.com/drivin/xwremote-ng (publication pending).
+Repository: https://github.com/drivin/xwremote-ng.
 The executable and configuration filenames remain `XwRemote` to preserve existing installations.
 
 How do i eliminate the need for many applications and the consequent open and close merry-go-round?
